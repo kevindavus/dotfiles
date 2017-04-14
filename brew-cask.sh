@@ -14,18 +14,18 @@ brew install caskroom/cask/brew-cask
 brew cask install spectacle
 brew cask install dropbox
 brew cask install gyazo
-brew cask install 1password
+brew cask install lastpass
 brew cask install rescuetime
 # brew cask install flux
 
 # dev
 brew cask install iterm2
-brew cask install sublime-text
+brew cask install visual-studio-code
 brew cask install imagealpha
 brew cask install imageoptim
 
 # fun
-brew cask install limechat
+# brew cask install limechat
 # brew cask install miro-video-converter
 # brew cask install horndis               # usb tethering
 
