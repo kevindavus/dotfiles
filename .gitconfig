@@ -23,8 +23,7 @@
 	show = diff-so-fancy | less --tabs=4 -RFX
 
 [interactive]
-  # disabled until github.com/so-fancy/diff-so-fancy/pull/172 is resolved :(
-	# diffFilter = "diff-so-fancy"
+	diffFilter = "diff-so-fancy"
 
 # so much color
 [color]
@@ -95,3 +94,6 @@
 	prune = true
 [diff]
 	compactionHeuristic = true
+[user]
+	email = osfan501@gmail.com
+	name = kevin
