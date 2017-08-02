@@ -14,7 +14,7 @@
 	reup = rebase-update # depot_tools specific
 
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /opt/boxen/config/git/gitignore
 	attributesfile = ~/.gitattributes
 
 [pager]
@@ -97,3 +97,9 @@
 [user]
 	email = osfan501@gmail.com
 	name = kevin
+
+[hub]
+protocol = https
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential

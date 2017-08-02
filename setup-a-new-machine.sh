@@ -41,15 +41,15 @@ cp -Rp ~/Documents ~/migration
 
 cp -Rp /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist ~/migration/rootLibrary/Preferences/SystemConfiguration/ # wifi
 
-cp -Rp ~/Library/Preferences/net.limechat.LimeChat.plist ~/migration/Library/Preferences/
+# cp -Rp ~/Library/Preferences/net.limechat.LimeChat.plist ~/migration/Library/Preferences/
 cp -Rp ~/Library/Preferences/com.tinyspeck.slackmacgap.plist ~/migration/Library/Preferences/
 
 cp -Rp ~/Library/Services ~/migration/Library/ # automator stuff
 cp -Rp ~/Library/Fonts ~/migration/Library/ # all those fonts you've installed
 
 # editor settings & plugins
-cp -Rp ~/Library/Application\ Support/Sublime\ Text\ * ~/migration/Library/"Application Support"
-cp -Rp ~/Library/Application\ Support/Code\ -\ Insider* ~/migration/Library/"Application Support"
+# cp -Rp ~/Library/Application\ Support/Sublime\ Text\ * ~/migration/Library/"Application Support"
+# cp -Rp ~/Library/Application\ Support/Code\ -\ Insider* ~/migration/Library/"Application Support"
 
 # also consider...
 # random git branches you never pushed anywhere?
@@ -132,8 +132,8 @@ fi
 # export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 
 # install all the things
-./brew.sh
-./brew-cask.sh
+~/projects/dotfiles/brew.sh
+~projects/dotfiles/brew-cask.sh
 
 ### end of homebrew
 ##############################################################################################################
@@ -147,7 +147,7 @@ fi
 
 # github.com/jamiew/git-friendly
 # the `push` command which copies the github compare URL to my clipboard is heaven
-bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
+# bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
 
 
 # Type `git open` to open the GitHub page or website for a repository.
@@ -238,7 +238,7 @@ git config user.email "osfan501@gmail.com"
 
 # set up osx defaults
 #   maybe something else in here https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
-sh .osx
+    ~/projects/dotfiles/.osx
 
 # setup and run Rescuetime!
 
@@ -255,7 +255,7 @@ sh .osx
 #   now .gitconfig can be shared across all machines and only the .local changes
 
 # symlink it up!
-./symlink-setup.sh
+    projects/dotfiles/symlink-setup.sh
 
 # add manual symlink for .ssh/config and probably .config/fish
 
