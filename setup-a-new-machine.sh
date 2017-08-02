@@ -151,7 +151,8 @@ bash < <( curl https://raw.github.com/jamiew/git-friendly/master/install.sh)
 
 
 # Type `git open` to open the GitHub page or website for a repository.
-npm install -g git-open
+npm install -g git-plus
+npm install -g remembrall
 
 # fancy listing of recent branches
 npm install -g git-recent
