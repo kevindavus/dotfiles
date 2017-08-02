@@ -11,8 +11,8 @@
 #=====================================================================#
    0       3        *        *         *        $HOME/coding/dotfiles/cron/daily-nighttime.sh > /dev/null 2>&1
 #  0       3        *        *         *        $HOME/coding/dotfiles/cron/compile-chrome.sh
-   0       *        *        *         *        $HOME/coding/dotfiles/cron/every-hour.sh
-   0       0        *        *         0        $HOME/coding/dotfiles/cron/twice-a-week.sh > /dev/null 2>&1
-   0       0        *        *         4        $HOME/coding/dotfiles/cron/twice-a-week.sh > /dev/null 2>&1
+#  0       *        *        *         *        $HOME/coding/dotfiles/cron/every-hour.sh
+#  0       0        *        *         0        $HOME/coding/dotfiles/cron/twice-a-week.sh > /dev/null 2>&1
+#  0       0        *        *         4        $HOME/coding/dotfiles/cron/twice-a-week.sh > /dev/null 2>&1
 #  */15    *        *        *         *        $HOME/bin/temp-help.sh
 #=====================================================================#

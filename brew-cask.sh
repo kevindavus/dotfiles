@@ -11,11 +11,10 @@ brew install caskroom/cask/brew-cask
 # brew tap caskroom/versions
 
 # daily
-brew cask install spectacle
 brew cask install dropbox
-brew cask install gyazo
 brew cask install lastpass
 brew cask install rescuetime
+brew cask install firefox
 # brew cask install flux
 
 # dev
@@ -41,7 +40,7 @@ brew cask install disk-inventory-x
 brew cask install screenflow
 brew cask install vlc
 brew cask install gpgtools
-brew cask install licecap
+# brew cask install licecap
 # brew cask install utorrent
 
 brew cask install spotify

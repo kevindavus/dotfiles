@@ -1,12 +1,5 @@
-
-# working files
-.vim/viminfo
-.vim/swaps/*
-.vim/undo
-
 # git credential file
 .gitconfig.local
-
 
 # no thx
 node_modules
@@ -26,10 +19,8 @@ Thumbs.db
 # Compiled Python files
 *.pyc
 
-# fish shell
-fishd.*
-.config/fish/fish_history
-fish/fish_history
 
 # random
 shilocation
+
+.vscode
