@@ -179,3 +179,22 @@ function nullify() {
 shellswitch () {
 	chsh -s $(brew --prefix)/bin/$1
 }
+
+#open jira to ticket number
+#jira fad 1234
+jira () {
+	osascript ~/projects/dotfiles/corp.sh
+	open https://jira.int.messagesystems.com/browse/$1-$2
+}
+
+startui () {
+	osascript ~/projects/dotfiles/aws.sh
+	cd ~/projects/webui
+	gulp
+	open http://app.sparkpost.dev:3000
+}
+
+startacc () {
+	cd ~/projects/accusers-api/api
+	npm start
+}
