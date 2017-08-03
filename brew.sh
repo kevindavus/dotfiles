@@ -22,6 +22,8 @@ brew install gnu-sed --with-default-names
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 brew install bash
 
+brew install exa
+
 brew install bash-completion
 
 brew install homebrew/completions/brew-cask-completion
