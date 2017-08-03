@@ -184,7 +184,14 @@ shellswitch () {
 #jira fad 1234
 jira () {
 	osascript ~/projects/dotfiles/corp.sh
-	open https://jira.int.messagesystems.com/browse/$1-$2
+
+	if [[ $1 = 'GE' || $1 = 'ge' ]]; then
+		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=324&selectedIssue=FAD-5259&quickFilter=2038
+	elif [[ $1 = 'GEB' || $1 = 'geb' ]]; then
+		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=325&view=planning.nodetail
+	else
+		open https://jira.int.messagesystems.com/browse/$1-$2
+	fi
 }
 
 startui () {
@@ -197,4 +204,16 @@ startui () {
 startacc () {
 	cd ~/projects/accusers-api/api
 	npm start
+}
+
+restart () {
+	osascript -e 'tell app "System Events" to restart'
+}
+
+shutdown () {
+	osascript -e 'tell app "System Events" to shut down'
+}
+
+sleep () {
+	osascript -e 'tell app "System Events" to sleep'
 }
