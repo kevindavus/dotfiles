@@ -1,11 +1,11 @@
 # Easier navigation: .., ..., ~ and -
-alias ..="cd .."
-alias cd..="cd .."
+alias ..="cs .."
+alias cs..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias ....="cs ../../.."
+alias .....="cs ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
+alias -- -="cs -"
 
 # mv, rm, cp
 alias mv='mv -v'
