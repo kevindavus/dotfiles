@@ -186,7 +186,7 @@ jira () {
 	osascript ~/projects/dotfiles/corp.sh
 
 	if [[ $1 = 'GE' || $1 = 'ge' ]]; then
-		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=324&selectedIssue=FAD-5259&quickFilter=2038
+		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=324&quickFilter=2038
 	elif [[ $1 = 'GEB' || $1 = 'geb' ]]; then
 		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=325&view=planning.nodetail
 	else
