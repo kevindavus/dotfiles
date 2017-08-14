@@ -219,3 +219,21 @@ shutdown () {
 sleep () {
 	osascript -e 'tell app "System Events" to sleep'
 }
+
+run-playbook() {
+  book=$1
+  tenant=$2
+  if [[ -z "$book" && -z "$tenant" ]]; then
+    echo "Usage: \n run-playbook <playbook> <tenant> [--options]"
+    return 255
+  fi
+  shift 2
+  ansible-playbook ${book}.yml --inventory-file=site/${tenant}/inventory --extra-vars="env=$PWD/site/${tenant}/site/site" --user=msysdeploy --private-key=~/.ssh/ecbuild $@
+}
+
+update-envs() {
+  cd ~/src/projects/Ansible-Environments
+  #hg up develop
+  #hg pull -u
+  cp -R ~/src/projects/Ansible-Environments ~/src/projects/Ansible-Deployment/site/
+}
