@@ -204,8 +204,41 @@ startui () {
 }
 
 startacc () {
+	#comment out app.tst.sparkpost for users, users api, and accounts
+	sed -i '3 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '9 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '33 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
+
+
+	#un-comment localhost for users, users api, and accounts
+	sed -i '4 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '10 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '34 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
+
+
+	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /opt/boxen/config/openresty/sites/sparkpost.conf
+
 	cd ~/projects/accusers-api/api
+	restart_openresty
 	npm start
+}
+
+endacc () {
+	killall node
+
+	sed -i '4 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '10 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '34 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
+
+
+	#un-comment localhost for users, users api, and accounts
+	sed -i '3 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '9 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '33 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
+
+
+	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /opt/boxen/config/openresty/sites/sparkpost.conf
+	sudo launchctl stop dev.openresty
 }
 
 restart () {
