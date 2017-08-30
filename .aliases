@@ -46,9 +46,9 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 # GIT STUFF
 
 function clone() {
+    cd ~/projects
     git clone --depth=1 $1
-    cd $(basename ${1%.*})
-    yarn install
+    cd ~/projects/$(basename $1) && npm install
 }
 alias push="git push"
 
