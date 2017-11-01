@@ -114,3 +114,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source /opt/boxen/env.sh
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi

@@ -14,7 +14,7 @@
 	reup = rebase-update # depot_tools specific
 
 [core]
-	excludesfile = /opt/boxen/config/git/gitignore
+	excludesfile = /Users/kdavis/.gitignore_global
 	attributesfile = ~/.gitattributes
 
 [pager]
@@ -86,9 +86,10 @@
 #	templatedir = ~/.git_template
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 
 [fetch]
 	prune = true
@@ -102,4 +103,14 @@
 protocol = https
 
 [credential]
-helper = /opt/boxen/bin/boxen-git-credential
+	helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/kdavis/.stCommitMsg
+[gui]
+	recentrepo = /Users/kdavis/projects/accusers-api

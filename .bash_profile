@@ -133,4 +133,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export SPARKPOST_API_KEY='246e5b210c0bfee7dd00b8bc83c4cca85afc0cd7'
-source /opt/boxen/env.sh
+# source /opt/boxen/env.sh
+
+source /opt/hamurai/env.sh 

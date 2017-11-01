@@ -2,3 +2,4 @@
 
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi

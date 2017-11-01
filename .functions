@@ -172,20 +172,10 @@ function nullify() {
   "$@" >/dev/null 2>&1
 }
 
-
-# # visual studio code. a la `subl`
-# function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCodeInsiders" --args $*; }
-
-# `shellswitch [bash |zsh]`
-#   Must be in /etc/shells
-shellswitch () {
-	chsh -s $(brew --prefix)/bin/$1
-}
-
 #open jira to ticket number
 #jira fad 1234
 jira () {
-	osascript ~/projects/dotfiles/corp.sh
+	osascript ~/projects/dotfiles/corp.scpt
 
 	if [[ $1 = 'GE' || $1 = 'ge' ]]; then
 		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=324&quickFilter=2038
@@ -197,7 +187,7 @@ jira () {
 }
 
 startui () {
-	osascript ~/projects/dotfiles/aws.sh
+	osascript ~/projects/dotfiles/aws.scpt
 	cd ~/projects/webui
 	gulp
 	open http://app.sparkpost.dev:3000
@@ -219,7 +209,7 @@ startacc () {
 	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /opt/boxen/config/openresty/sites/sparkpost.conf
 
 	cd ~/projects/accusers-api/api
-	restart_openresty
+	sudo launchctl stop dev.openresty
 	npm start
 }
 
@@ -239,18 +229,6 @@ endacc () {
 
 	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /opt/boxen/config/openresty/sites/sparkpost.conf
 	sudo launchctl stop dev.openresty
-}
-
-restart () {
-	osascript -e 'tell app "System Events" to restart'
-}
-
-shutdown () {
-	osascript -e 'tell app "System Events" to shut down'
-}
-
-sleep () {
-	osascript -e 'tell app "System Events" to sleep'
 }
 
 run-playbook() {
