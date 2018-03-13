@@ -89,6 +89,42 @@ set_prompts() {
         if [ $USER != "$default_username" ]; then echo $userhost ""; fi
     }
 
+    # If in a Mercurial repository, output "<branch:bookmark/qtop+*->", where
+    # "branch" is the current branch
+    # ":bookmark" is the active bookmark, if any
+    # "/qtop" is the current patch, if any
+    # "+" if any files have been added
+    # "-" if any files have been removed
+    # "*" if any files have been modified
+    # "?" if any files exist that have not been added
+    #
+    # If not in a Mercurial repository, produce no output.
+    function hg_prompt() {
+        local summary=$(hg summary 2>/dev/null)
+        if [[ -z $summary ]]; then return; fi
+
+        local branch=$(echo "$summary" | sed -E -n '/^branch: ([^ ]+).*$/ s//\1/p')
+
+        local bookmark=$(echo "$summary" | sed -E -n '/^bookmarks: \*([^ ]+).*$/ s//:\1/p')
+
+        # Use qtop to get current patch.
+        # Special handling for "no patches applied" and for the error message that
+        # is generated if the mq extension is not enabled.
+        local qtop=$(hg qtop 2>/dev/null | sed -E -n '
+            /no patches applied/                     q
+            /is provided by the following extension/ q
+            /(.+)/                                   s//\/\1/p
+        ')
+
+        local commit=$(echo "$summary" | sed -n '/^commit: .*$/p')
+
+        local mod=$(echo "$commit" | sed -n '/.*modified.*/ s//*/p')
+        local unk=$(echo "$commit" | sed -n '/.*unknown.*/  s//?/p')
+        local add=$(echo "$commit" | sed -n '/.*added.*/    s//+/p')
+        local del=$(echo "$commit" | sed -n '/.*removed.*/  s//-/p')
+
+        echo -e " ${2}(${1}${branch}${bookmark}${qtop}${add}${del}${mod}${unk}${2})"
+    }
 
     function prompt_git() {
         # this is >5x faster than mathias's.
@@ -140,6 +176,7 @@ set_prompts() {
     PS1+="\[$(usernamehost)\]"                              # username at host
     PS1+="\[$green\]\w"                                     # working directory
     PS1+="\$(prompt_git \"$white on $purple\" \"$cyan\")"   # git repository details
+    PS1+="\$(hg_prompt \"$white on $purple\" \"$cyan\")"   # git repository details
     PS1+="\n"
     PS1+="\[$reset$white\]\\$ \[$reset\]"
 

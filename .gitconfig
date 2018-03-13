@@ -114,3 +114,4 @@ protocol = https
 	template = /Users/kdavis/.stCommitMsg
 [gui]
 	recentrepo = /Users/kdavis/projects/accusers-api
+	recentrepo = /Users/kdavis/projects/control-api

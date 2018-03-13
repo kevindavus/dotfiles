@@ -115,3 +115,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 source /opt/boxen/env.sh
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+[ -f /opt/hamurai/env.sh ] && source /opt/hamurai/env.sh

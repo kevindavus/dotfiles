@@ -177,10 +177,10 @@ function nullify() {
 jira () {
 	osascript ~/projects/dotfiles/corp.scpt
 
-	if [[ $1 = 'GE' || $1 = 'ge' ]]; then
-		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=324&quickFilter=2038
-	elif [[ $1 = 'GEB' || $1 = 'geb' ]]; then
-		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=325&view=planning.nodetail
+	if [[ $1 = 'progress' || $1 = 'current' || $1 = '' ]]; then
+		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=148
+	elif [[ $1 = 'backlog' ]]; then
+		open "https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=325&view=planning.nodetail&quickFilter=2043"
 	else
 		open https://jira.int.messagesystems.com/browse/$1-$2
 	fi
@@ -195,40 +195,42 @@ startui () {
 
 startacc () {
 	#comment out app.tst.sparkpost for users, users api, and accounts
-	sed -i '3 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
-	sed -i '9 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
-	sed -i '33 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '3 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
+	sed -i '9 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
+	sed -i '33 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
 
 
 	#un-comment localhost for users, users api, and accounts
-	sed -i '4 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
-	sed -i '10 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
-	sed -i '34 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '4 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
+	sed -i '10 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
+	sed -i '34 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
 
 
-	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /opt/boxen/config/openresty/sites/sparkpost.conf
+	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /usr/local/etc/openresty/sites/sparkpost.conf
 
 	cd ~/projects/accusers-api/api
-	sudo launchctl stop dev.openresty
+	sudo brew services start openresty
+	sudo brew services start dnsmasq
 	npm start
 }
 
 endacc () {
 	killall node
 
-	sed -i '4 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
-	sed -i '10 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
-	sed -i '34 s/^/#/' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '4 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
+	sed -i '10 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
+	sed -i '34 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
 
 
 	#un-comment localhost for users, users api, and accounts
-	sed -i '3 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
-	sed -i '9 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
-	sed -i '33 s/#//' /opt/boxen/config/openresty/sites/sparkpost.conf;
+	sed -i '3 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
+	sed -i '9 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
+	sed -i '33 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
 
 
-	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /opt/boxen/config/openresty/sites/sparkpost.conf
-	sudo launchctl stop dev.openresty
+	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /usr/local/etc/openresty/sites/sparkpost.conf
+	sudo brew services stop openresty
+	sudo brew services stop dnsmasq
 }
 
 run-playbook() {

@@ -127,7 +127,7 @@ shopt -s dirspell 2> /dev/null
 shopt -s globstar 2> /dev/null
 
 export PATH=$PATH:~/projects/gitplus/commands
-alias restart_openresty="sudo launchctl stop dev.openresty"
+alias restart_openresty="sudo brew services restart openresty"
 export NVM_DIR="$HOME/.nvm"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -135,4 +135,8 @@ export NVM_DIR="$HOME/.nvm"
 export SPARKPOST_API_KEY='246e5b210c0bfee7dd00b8bc83c4cca85afc0cd7'
 # source /opt/boxen/env.sh
 
-source /opt/hamurai/env.sh 
+source /opt/hamurai/env.sh
+alias uat-cqlsh="cqlsh a.pdb1v.cc.aws-usw2a.tst.sparkpost -k mo_uat"
+alias p-cqlsh="cqlsh a.pdb1v.cc.aws-usw2a.prd.sparkpost -k mo_spc"
+alias s-cqlsh="cqlsh a.pdb1v.cc.aws-usw2a.stg.sparkpost -k mo_staging"
+export PATH=/usr/local/lib/python2.7/site-packages:$PATH
