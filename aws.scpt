@@ -1,8 +1,8 @@
 tell application "Tunnelblick"
-    connect "messagesystems-awsprod-kdavis"
-    get state of first configuration where name = "messagesystems-awsprod-kdavis"
+    connect "aws"
+    get state of first configuration where name = "aws"
     repeat until result = "CONNECTED"
         delay 1
-        get state of first configuration where name = "messagesystems-awsprod-kdavis"
+        get state of first configuration where name = "aws"
     end repeat
 end tell
