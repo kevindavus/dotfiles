@@ -132,8 +132,8 @@ fi
 # export PATH=$HOME/.homebrew/bin:$HOME/.homebrew/sbin:$PATH
 
 # install all the things
-~/projects/dotfiles/brew.sh
-~projects/dotfiles/brew-cask.sh
+~/src/dotfiles/brew.sh
+~/src/dotfiles/brew-cask.sh
 
 ### end of homebrew
 ##############################################################################################################
@@ -168,14 +168,14 @@ npm install --global trash-cli
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 # github.com/rupa/z   - oh how i love you
-git clone https://github.com/rupa/z.git ~/coding/z
+git clone https://github.com/rupa/z.git ~/src/z
 # consider reusing your current .z file if possible. it's painful to rebuild :)
 # z is hooked up in .bash_profile
 
 
 # github.com/thebitguru/play-button-itunes-patch
 # disable itunes opening on media keys
-git clone https://github.com/thebitguru/play-button-itunes-patch ~/coding/play-button-itunes-patch
+git clone https://github.com/thebitguru/play-button-itunes-patch ~/src/play-button-itunes-patch
 
 
 # my magic photobooth symlink -> dropbox. I love it.
@@ -238,7 +238,7 @@ git config user.email "osfan501@gmail.com"
 
 # set up osx defaults
 #   maybe something else in here https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
-    ~/projects/dotfiles/.osx
+    ~/src/dotfiles/.osx
 
 # setup and run Rescuetime!
 
@@ -255,7 +255,7 @@ git config user.email "osfan501@gmail.com"
 #   now .gitconfig can be shared across all machines and only the .local changes
 
 # symlink it up!
-    projects/dotfiles/symlink-setup.sh
+    src/dotfiles/symlink-setup.sh
 
 # add manual symlink for .ssh/config and probably .config/fish
 

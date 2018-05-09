@@ -11,10 +11,10 @@ brew install caskroom/cask/brew-cask
 # brew tap caskroom/versions
 
 # daily
-brew cask install dropbox
-brew cask install lastpass
+# brew cask install dropbox
+# brew cask install lastpass
 brew cask install rescuetime
-brew cask install firefox
+# brew cask install firefox
 # brew cask install flux
 
 # dev

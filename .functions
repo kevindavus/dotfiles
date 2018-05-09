@@ -175,7 +175,7 @@ function nullify() {
 #open jira to ticket number
 #jira fad 1234
 jira () {
-	osascript ~/projects/dotfiles/corp.scpt
+	osascript ~/src/dotfiles/corp.scpt
 
 	if [[ $1 = 'progress' || $1 = 'current' || $1 = '' ]]; then
 		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=148
@@ -184,69 +184,4 @@ jira () {
 	else
 		open https://jira.int.messagesystems.com/browse/$1-$2
 	fi
-}
-
-startui () {
-	osascript ~/projects/dotfiles/aws.scpt
-	cd ~/projects/webui
-	gulp
-	open http://app.sparkpost.dev:3000
-}
-
-startacc () {
-	#comment out app.tst.sparkpost for users, users api, and accounts
-	sed -i '3 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
-	sed -i '9 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
-	sed -i '33 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
-
-
-	#un-comment localhost for users, users api, and accounts
-	sed -i '4 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
-	sed -i '10 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
-	sed -i '34 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
-
-
-	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /usr/local/etc/openresty/sites/sparkpost.conf
-
-	cd ~/projects/accusers-api/api
-	sudo brew services start openresty
-	sudo brew services start dnsmasq
-	npm start
-}
-
-endacc () {
-	killall node
-
-	sed -i '4 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
-	sed -i '10 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
-	sed -i '34 s/^/#/' /usr/local/etc/openresty/sites/sparkpost.conf;
-
-
-	#un-comment localhost for users, users api, and accounts
-	sed -i '3 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
-	sed -i '9 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
-	sed -i '33 s/#//' /usr/local/etc/openresty/sites/sparkpost.conf;
-
-
-	sed -n -e '2,4p' -e '8,10p' -e '32,34p' /usr/local/etc/openresty/sites/sparkpost.conf
-	sudo brew services stop openresty
-	sudo brew services stop dnsmasq
-}
-
-run-playbook() {
-  book=$1
-  tenant=$2
-  if [[ -z "$book" && -z "$tenant" ]]; then
-    echo "Usage: \n run-playbook <playbook> <tenant> [--options]"
-    return 255
-  fi
-  shift 2
-  ansible-playbook ${book}.yml --inventory-file=site/${tenant}/inventory --extra-vars="env=$PWD/site/${tenant}/site/site" --user=msysdeploy --private-key=~/.ssh/ecbuild $@
-}
-
-update-envs() {
-  cd ~/src/projects/Ansible-Environments
-  #hg up develop
-  #hg pull -u
-  cp -R ~/src/projects/Ansible-Environments ~/src/projects/Ansible-Deployment/site/
 }

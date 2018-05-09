@@ -24,19 +24,10 @@ brew install bash
 
 brew install exa
 
-brew install bash-completion
-
 brew install homebrew/completions/brew-cask-completion
 
 # Install wget with IRI support
 brew install wget --with-iri
-
-# Install more recent versions of some OS X tools
-brew install vim --with-override-system-vi
-brew install homebrew/dupes/nano
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
 
 # z hopping around folders
 brew install z
@@ -70,12 +61,10 @@ brew install tree
 
 brew install terminal-notifier
 
-brew install android-platform-tools
 brew install pidcat   # colored logcat guy
 
 brew install ncdu # find where your diskspace went
 
-brew install zsh
 
 # Remove outdated versions from the cellar
 brew cleanup
