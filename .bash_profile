@@ -130,4 +130,6 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-nvm use 8.1
+git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
+git remote prune origin
+git fetch -p

@@ -172,16 +172,9 @@ function nullify() {
   "$@" >/dev/null 2>&1
 }
 
-#open jira to ticket number
-#jira fad 1234
-jira () {
-	osascript ~/src/dotfiles/corp.scpt
-
-	if [[ $1 = 'progress' || $1 = 'current' || $1 = '' ]]; then
-		open https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=148
-	elif [[ $1 = 'backlog' ]]; then
-		open "https://jira.int.messagesystems.com/secure/RapidBoard.jspa?rapidView=325&view=planning.nodetail&quickFilter=2043"
-	else
-		open https://jira.int.messagesystems.com/browse/$1-$2
-	fi
+ui(){
+	cd ~/src/ui
+	code .
+	yarn start
+	open http://0.0.0.0:3001/admin
 }

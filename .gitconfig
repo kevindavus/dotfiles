@@ -1,6 +1,6 @@
 [alias]
 	c = commit -am
-	up = pull
+	up = pull --rebase --autostash
 	p = push
 	s = status
 	sclone = clone --depth=1
@@ -109,7 +109,9 @@ protocol = https
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
 	template = /Users/kdavis/.stCommitMsg
+[pull]
+	rebase = true

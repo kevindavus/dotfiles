@@ -45,19 +45,25 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 ###
 # GIT STUFF
 
-function clone() {
+function clone() {   
     cd ~/src
-    git clone --depth=1 $1
-    cd ~/src/$(basename $1) && npm install
+    tmp=$(basename $1)
+    repo_name=${tmp%.*}
+    git clone "$1"
+    printf "changing to directory %s\n" "$repo_name"
+    cd "$(basename "$repo_name")" && yarn
+    code .
 }
 alias push="git push"
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
 
+alias gfd="git add . && git commit --amend --no-edit && git push --force"
 # git root
+
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
-alias master="git checkout master"
+alias master="git stash&&git checkout master&&git pull&&git stash pop&&yarn"
 
 # Networking. IP address, dig, DNS
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -84,8 +90,6 @@ alias emptytrash=" \
     sudo rm -rfv /Volumes/*/.Trashes; \
     rm -rfv ~/.Trash/*; \
     sudo rm -v /private/var/vm/sleepimage; \
-    rm -rv \"/Users/kdavis/Library/Application Support/stremio/Cache\";  \
-    rm -rv \"/Users/kdavis/Library/Application Support/stremio/stremio-cache\" \
 "
 
 # Update installed Ruby gems, Homebrew, npm, and their installed packages
